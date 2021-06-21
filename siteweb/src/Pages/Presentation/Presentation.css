@@ -1,0 +1,25 @@
+.my-logo-style {
+    margin: auto;
+    width: 50%;
+  }
+  .style-lo {
+    font-weight: bold;
+    font-size: 22px;
+    color: red;
+  }
+  .style-par {
+    font-weight: bold;
+    font-size: 20px;
+    color: #014a78;
+    font-family: calibri;
+    text-align: center;
+  }
+  .pos {
+    margin: 10%;
+    padding: 5%;
+  }
+  .style-li {
+    margin: 10%;
+    color: #ff112e;
+    text-align: center;
+  }

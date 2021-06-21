@@ -1,0 +1,37 @@
+.my-navbar {
+    background-color: #102181 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 1% 3% !important;
+  }
+  
+  .my-nav {
+    /* width: 1000px !important; */
+    display: flex !important;
+    /* justify-content: center !important; */
+    align-items: center !important;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    width: 150px;
+    color: white;
+  }
+  .logo {
+    width: 17%;
+  }
+  
+  .dropdown-menu a {
+    /* background-color: #102181 !important ; */
+    color: #102181 !important;
+  }
+  .style-btn {
+    background-color: #ff1332;
+    border-color: #ff1332;
+    color: white;
+  }
+  .style-btn:hover {
+    background-color: #ff1332;
+  }
+  .panier{
+    width:35%
+  }
