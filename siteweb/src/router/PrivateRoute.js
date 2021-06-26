@@ -6,6 +6,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   if (isUser) {
     return <Route component={Component} {...rest} />;
   }
-  return <Redirect to="/" />;
+  return <Redirect to="/*" />;
 };
 export default PrivateRoute;

@@ -1,3 +1,7 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
 .my-navbar {
     background-color: #102181 !important;
     display: flex !important;

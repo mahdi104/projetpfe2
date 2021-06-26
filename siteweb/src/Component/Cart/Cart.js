@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
@@ -11,6 +11,7 @@ const Cart = ({ match, location, history }) => {
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
     const cart = useSelector((state) => state.cartReducer.cartItems)
+    const [state, setstate] = useState(qty)
     // const  {cartItems}  = cart
     useEffect(() => {
       dispatch(getProductById)
@@ -41,33 +42,21 @@ const Cart = ({ match, location, history }) => {
                         <ListGroup.Item key={item.product}>
                             <Row>
                                 <Col md={2}>
-                                    <Image src={item.img} alt={item.title} fluid rounded />
+                                    <Image src={`http://localhost:7000/static/${item.img}`} alt={item.title} fluid rounded />
                                 </Col>
                                 <Col md={3}>
                                     <Link to={`/product/${item.product}`}>{item.title}</Link>
                                 </Col>                   
                                 <Col md={2}></Col>
                                 <Col md={2}>
-                                    <Form.Control 
-                                    as='select'
-                                    value={item.qty}
-                                    onChange={(e) =>
-                                        dispatch(
-                                            addToCart(item.product, Number(e.target.value))
-                                            )
-                                        }
-                                        >
-                                            {[...Array(item.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </Form.Control>
+                                  <input value={state}/>
+                                  {console.log(item)}
+                                  {/* <button onClick={()=>{addToCart(item,qty+1)}}>+</button> */}
                   </Col>
                   <Col md={2}>
                     <Button
                       type='button'
-                      variant='light'
+                      variant='dark'
                       onClick={() => removeFromCartHandler(item.product)}
                     >
                       <i className='fas fa-trash'></i>
@@ -87,10 +76,7 @@ const Cart = ({ match, location, history }) => {
                 Subtotal ({cart.reduce((acc, item) => acc + item.qty, 0)})
                 items
               </h2>
-              $
-              {cart
-                .reduce((acc, item) => acc + item.qty * item.price, 0)
-                .toFixed(2)}
+             
             </ListGroup.Item>
             <ListGroup.Item>
               <Button

@@ -16,9 +16,16 @@ import GetUsers from './Component/GetUsers/GetUser';
 import GetProductyCategorie from './Component/GetProductByCategorie/GetProductyCategorie';
 import GetProduct from './Component/GetProductUsers/GetProduct';
 import Cart from "./Component/Cart/Cart";
+import Errors from './Component/Errors';
+import React,{useEffect} from 'react';
 
-
+import { useDispatch } from "react-redux";
+import { currentUser } from "./JS/action/user";
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(currentUser());
+  }, []);
   return (
     <div className="App">
    <NavBar/>   
@@ -35,7 +42,8 @@ function App() {
      <Route path="/productlist" component={GetProduct}/>
      <Route path="/categorie" component={GetProductyCategorie}/>
      <PrivateRouteAdmin path="/listeUtilisateurs" component={GetUsers}/>
-     <Route path="/cart/:id?" component={Cart}/>
+     <PrivateRoute path="/cart/:id?" component={Cart}/>
+     <Route path="/*" component={Errors}/>
    </Switch>
  </div>
   );

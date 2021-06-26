@@ -38,7 +38,7 @@ const ProductUser = ({product}) => {
                 inverted
                 color="green"
                 onClick={() => {
-                  dispatch(addToCart());
+                  dispatch( addToCart(product,1));
                 }}
               >
                 Ajouter au panier
