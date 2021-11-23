@@ -14,6 +14,7 @@ const { EditUser, getAllUsers } = require("../controllers/user.controller");
 router.post("/signin", signinValidation(), validation, SignIn);
 router.put("/update:_id", EditUser);
 router.get("/all", getAllUsers);
+
 // router.get("/current", isAdmin, (req, res) => {
 //   res.send({ admin: req.admin, msg: "sucess" });
 // });

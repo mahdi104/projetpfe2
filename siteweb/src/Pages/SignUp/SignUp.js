@@ -9,6 +9,7 @@ import { register, videErrors } from "../../JS/action/user";
 import "./SignUp.css";
 
 const SignUp = ({ history }) => {
+  const [errorHandle, setErrorHandle] = useState(false)
   const [user, setuser] = useState({
     firstname: "",
     lastname: "",
@@ -17,7 +18,7 @@ const SignUp = ({ history }) => {
     etablissement: "",
   });
   const errors = useSelector((state) => state.userReducer.errors);
-  console.log(`errrooooos :${errors.length}`);
+
   const dispatch = useDispatch();
   console.log(history);
   const handleChange = (e) => {
@@ -28,6 +29,11 @@ const SignUp = ({ history }) => {
       dispatch(videErrors());
     };
   }, []);
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+    return re.test(String(email).toLowerCase());
+}
+const testPassword=(x)=>  x.length>6
   return (
     <div className="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
       <div className="card card0 border-0">
@@ -41,61 +47,61 @@ const SignUp = ({ history }) => {
               <div className="row px-3">
                 {" "}
                 <label className="mb-1">
-                  <h6 className="mb-0 text-sm">First Name</h6>
+                  <h6 className="mb-0 text-sm">Nom</h6>
                 </label>{" "}
                 <input
                   className="mb-4"
                   type="text"
                   name="firstname"
                   onChange={handleChange}
-                  placeholder="Enter a valid Name"
+                  placeholder="Entrer un nom valide"
                 />{" "}
                 <label className="mb-1">
-                  <h6 className="mb-0 text-sm">Last Name</h6>
+                  <h6 className="mb-0 text-sm">Prénom</h6>
                 </label>{" "}
                 <input
                   className="mb-4"
                   type="text"
                   name="lastname"
                   onChange={handleChange}
-                  placeholder="Enter a valid Name"
+                  placeholder="Entrer un prénom valide"
                 />{" "}
               </div>
               <div className="row px-3">
                 {" "}
                 <label className="mb-1">
-                  <h6 className="mb-0 text-sm">Email Address</h6>
+                <h6 className="mb-0 text-sm" style={errorHandle&&!validateEmail(user.email)?{color:"red"}:null}>Adresse email</h6>
                 </label>{" "}
                 <input
                   className="mb-4"
                   type="text"
                   name="email"
                   onChange={handleChange}
-                  placeholder="Enter a valid email address"
+                  placeholder="Entrer une adresse mail valide"
                 />{" "}
               </div>
               <div className="row px-3">
                 {" "}
                 <label className="mb-1">
-                  <h6 className="mb-0 text-sm">Ettablissement</h6>
+                  <h6 className="mb-0 text-sm">Société</h6>
                 </label>{" "}
                 <input
                   type="text"
                   name="etablissement"
-                  placeholder="Enter Ettablissement"
+                  placeholder="Enter le nom de la société"
                   onChange={handleChange}
                 />{" "}
               </div>
               <div className="row px-3">
                 {" "}
                 <label className="mb-1">
-                  <h6 className="mb-0 text-sm">Password</h6>
+                  <h6 className="mb-0 text-sm"> Mot de passe</h6>
                 </label>{" "}
                 <input
                   type="password"
                   name="password"
                   onChange={handleChange}
-                  placeholder="Enter password"
+                  placeholder="Entrer le mot de passe"
                 />{" "}
               </div>
               <div className="row mb-3 px-3">
@@ -103,20 +109,21 @@ const SignUp = ({ history }) => {
                 <button
                   type="submit"
                   className="btn btn-blue text-center"
-                  onClick={() => dispatch(register(user, history))}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if(validateEmail(user.email)&&testPassword(user.password)){
+                      dispatch(register(user, history))
+                  setErrorHandle(false)}
+                    else{setErrorHandle(true)}
+                    
+                  }
+                    }
                 >
-                  SignUp
+                  S'inscrire
                 </button>{" "}
+                
               </div>
-              <div className="row mb-4 px-3">
-                {" "}
-                <small className="font-weight-bold">
-                  Don't have an account?{" "}
-                  <Link to="/signin">
-                    <a className="text-danger ">SignIn</a>
-                  </Link>
-                </small>{" "}
-              </div>
+              {errors.map((e)=>{if(e.msg=="User already exist email should be unique") {return <h5 style={{color:"red"}}>{e.msg}</h5>}})}
             </div>
           </div>
         </div>

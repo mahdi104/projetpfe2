@@ -18,10 +18,16 @@
   
   .navbar-light .navbar-nav .nav-link {
     width: 150px;
+    font-size: 16px !important;
     color: white;
+    font-weight: bold;
+  }
+.navbar-item:hover{
+    color: #8DD4FC !important;
   }
   .logo {
-    width: 17%;
+    width: 15%;
+
   }
   
   .dropdown-menu a {
@@ -37,5 +43,5 @@
     background-color: #ff1332;
   }
   .panier{
-    width:35%
+    width: 20%
   }

@@ -43,7 +43,7 @@ import {
       //     alert(el.msg);
       //   }, 3000)
       // );
-      dispatch({ type: FAIL_USER, payload: error });
+      dispatch({ type: FAIL_USER, payload: error.response.data.errors });
     }
   };
   
@@ -55,7 +55,7 @@ import {
       const result = await axios.get("/api/user/current", options);
       dispatch({ type: CURRENT_USER, payload: result.data });
     } catch (error) {
-      dispatch({ type: FAIL_USER, payload: error.response.data });
+      dispatch({ type: FAIL_USER, payload: error.response.data.errors });
     }
   };
   
@@ -96,6 +96,17 @@ import {
     } catch (error) {
       dispatch({ type: FAIL_USER, payload: error.response.data });
     }
+};
+export const deleteUser = (id) => async (dispatch) => {
+  try {
+    const options = {
+      headers: { Authorization: localStorage.getItem("token") },
+    };
+    await axios.delete(`/api/admin/${id}`, options);
+    dispatch(getUsers());
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // export const addCart = async (product) => {

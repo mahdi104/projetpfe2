@@ -21,11 +21,15 @@ import React,{useEffect} from 'react';
 
 import { useDispatch } from "react-redux";
 import { currentUser } from "./JS/action/user";
+import NosClient from './Component/NosClients/NosClient';
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(currentUser());
+    
   }, []);
+
   return (
     <div className="App">
    <NavBar/>   
@@ -35,6 +39,7 @@ function App() {
      <Route path="/signup" component={SignUp}/>
      <Route path="/signin" component={SignIn}/>
      <Route path="/signinadmin" component={SignInAdmin}/>
+     <Route path="/Nos Clients" component={NosClient} />
      <PrivateRoute path="/profile" component={Profile}/>
      <PrivateRouteAdmin path="/interfaceadmin" component={InterfaceAdmin}/>
      <PrivateRouteAdmin path={["/AddProduct","/edit/:id"]} component={AddProduct}/>

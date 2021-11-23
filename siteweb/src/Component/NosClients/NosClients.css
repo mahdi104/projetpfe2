@@ -1,0 +1,19 @@
+.sizestyle {
+    margin: 10%;
+    width: 80%;
+    height: 40%;
+  }
+  .background {
+    margin: 5%;
+    width: 90%;
+    background-color: #606cfc;
+    height: 35px;
+    color: rgb(173, 173, 173);
+    text-align: center;
+    box-shadow: 0px 8px 4px -4px;
+    border-radius: 25px;
+  }
+  .styletype {
+    color: white;
+    font-weight: bold;
+  }

@@ -13,7 +13,7 @@ const Product = ({ product, user }) => {
       <Card className="style">
         <Card.Content>
           <img
-            src={`http://localhost:7000/static/${product.img || user.img}`}
+            src={`http://localhost:7000/static/${product.img }`}
             width="200px"
             style={{ marginLeft: "30px" }}
           />
@@ -27,43 +27,33 @@ const Product = ({ product, user }) => {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
+         
           <div className="ui two buttons">
-            <Link to={`/edit/${product._id || user._id}`}>
-              <Button
-                inverted
-                color="green"
-                onClick={() => {
-                  dispatch(toggleTrue());
-                }}
-              >
-                Edit
-              </Button>
-            </Link>
-            <Button
-              inverted
-              color="red"
-              onClick={() => dispatch(deleteProduct(product._id))}
-            >
-              Delete
-            </Button>
-            {user.status === "active" ? (
-              <Button
-                color="black"
-                onClick={() =>
-                  dispatch(update(user._id, { status: "desactive" }))
-                }
-              >
-                block
-              </Button>
-            ) : null}
-            {user.status === "desactive" ? (
-              <Button
-                color="black"
-                onClick={() => dispatch(update(user._id, { status: "active" }))}
-              >
-                Deblock
-              </Button>
-            ) : null}
+            {product ? (
+                <Link to={`/edit/${product._id }`}>
+                  <Button
+                      inverted
+                      color="green"
+                      onClick={() => {
+                        dispatch(toggleTrue());
+                      }}
+                  >
+                    Mise à jour
+                  </Button>
+                </Link>
+            ):null}
+            {product ? (
+                <Button
+                    inverted
+                    color="red"
+                    onClick={() => dispatch(deleteProduct(product._id))}
+                >
+                  Supprimer
+                </Button>
+            ):null}
+
+
+
           </div>
         </Card.Content>
       </Card>

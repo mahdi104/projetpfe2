@@ -1,5 +1,4 @@
 const Product = require("../model/Product");
-
 /**
    @desc : Create  
    @path : http://localhost:7000/api/product/
@@ -10,7 +9,7 @@ const Product = require("../model/Product");
 const create = async (req, res) => {
   try {
     const { title, description, details, categories } = req.body;
-    console.log(req.body)
+    // console.log(req.body)
 
     if (!title || !description) {
       res.status(400).send({ msg: "title and description are required" });
@@ -32,6 +31,7 @@ const create = async (req, res) => {
     res.status(200).send({ msg: "Product Added Successfully", newproduct });
   } catch (error) {
     res.status(400).send({ msg: "cannot add a Product", error: error });
+    console.log(error)
   }
 };
 

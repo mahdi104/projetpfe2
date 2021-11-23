@@ -23,20 +23,20 @@ const NavBar = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
             <Nav.Link href="/" className="navbar-item">
-                Acceuil
+                Accueil
               </Nav.Link>
               <Nav.Link href="/presentation" className="navbar-item">
                 Présentation
               </Nav.Link>
-              <Nav.Link href="/Nos References" className="navbar-item">
-                Nos Réferences
+              <Nav.Link href="/Nos clients" className="navbar-item">
+                Nos clients
               </Nav.Link>
               <Nav.Link href="/productlist" className="navbar-item">
-                Liste Des Produits
-              </Nav.Link>
+                Liste des produits
+              </Nav.Link>{isUser?
               <Nav.Link href="/cart" className="navbar-item">
-                <img src={Panier} alt="panier" className="panier"/>
-              </Nav.Link>
+                <img src={Panier} alt="panier" className="panier" />
+              </Nav.Link>:null}
               {/* <NavDropdown
                 title="Catégories"
                 id="basic-nav-dropdown"
@@ -64,7 +64,7 @@ const NavBar = () => {
                 <Form inline>
                   <Link to="/" onClick={() => dispatch(logout())}>
                     <Button className="style-btn" variant="outline-info">
-                      Logout
+                      Déconnecter
                     </Button>
                   </Link>
                 </Form>
@@ -72,12 +72,12 @@ const NavBar = () => {
                 <div>
                   <Link to="/signin">
                     <Button variant="outline-info" className="style-btn">
-                      SignIn
+                      Se Connecter
                     </Button>
                   </Link>
                   <Link to="/signup">
                     <Button variant="outline-info" className="style-btn">
-                      SignUp
+                      S'inscrire
                     </Button>
                   </Link>
                 </div>

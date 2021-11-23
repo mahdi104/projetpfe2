@@ -4,6 +4,7 @@ import { addProduct, editProduct, toggleFalse } from "../../JS/action/product";
 import { Button, Form } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./AddProduct.css";
+
 const AddProduct = ({ history, match }) => {
   const [product, setProduct] = useState({
     img: "",
@@ -34,7 +35,9 @@ const AddProduct = ({ history, match }) => {
   };
   console.log(product.title);
   return (
-    <Form className="postyle">
+    <div>
+      
+          <Form className="postyle">
       <Form.Field>
         <label>Upload Image</label>
         <input
@@ -102,10 +105,12 @@ const AddProduct = ({ history, match }) => {
             e.preventDefault();
           }}
         >
-          {!edit ? "Save" : "edit"}
+          {!edit ? "Ajouter" : "Mise a Jour"}
         </Button>
       </Link>
     </Form>
+    </div>
+
   );
 };
 

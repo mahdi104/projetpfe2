@@ -3,11 +3,13 @@ import { useSelector,useDispatch } from "react-redux";
 import { currentUser } from '../../JS/action/user';
  import { addToCart } from "../../JS/action/Cart";
 import { Button, Card } from "semantic-ui-react";
+
 import { Link } from "react-router-dom";
 import "../Product/Product.css"
 
 const ProductUser = ({product}) => {
   const user = useSelector((state) => state.userReducer.user);
+  const isUser = useSelector((state) => state.userReducer.isUser);
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(currentUser());
@@ -34,7 +36,7 @@ const ProductUser = ({product}) => {
         <Card.Content extra>
           <div className="ui two buttons">
             <Link to={`/cart/${product._id }`}>
-              <Button
+{isUser?              <Button
                 inverted
                 color="green"
                 onClick={() => {
@@ -42,7 +44,12 @@ const ProductUser = ({product}) => {
                 }}
               >
                 Ajouter au panier
-              </Button>
+              </Button>: <Link to="/signin">
+                    <Button variant="outline-info" className="style-btn">
+                    se Connecter pour ajouter vos produits au panier
+                    </Button>
+                  </Link>}
+
             </Link>
           </div>
         </Card.Content>

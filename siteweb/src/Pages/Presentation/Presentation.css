@@ -20,6 +20,7 @@
   }
   .style-li {
     margin: 10%;
+    list-style-type: disc;
     color: #ff112e;
-    text-align: center;
+    text-align: left;
   }

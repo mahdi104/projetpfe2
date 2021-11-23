@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../JS/action/user";
-import Product from "../Product/Product"
+import User from "./User"
 
 const GetUsers = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,8 @@ const GetUsers = () => {
           }}
         >
           {users.map((el) => (
-            <Product key={el._id} product={[]} user={el} />
+            <User key={el._is} user={el}/>
+
           ))}
         </div>
       </div>

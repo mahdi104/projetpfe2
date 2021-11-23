@@ -54,7 +54,7 @@ import {
           errors: [],
         };
       case FAIL_USER:
-        return { ...state, loadUser: false, errors: payload };
+        return { ...state, loadUser: false, errors: payload,isUser: false };
       case LOGOUT_USER:
         localStorage.removeItem("token");
         return {

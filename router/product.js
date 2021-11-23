@@ -40,9 +40,11 @@ const {
   getProductById,
 } = require("../controllers/product.controller");
 
+
 router.post("/", isAdmin, upload, create);
 router.get("/", Retrieve);
 router.delete("/:_id", isAdmin, deleteProduct);
+
 router.put("/:_id", isAdmin, upload, editProduct);
 router.get("/categorie/:cat", getProductByCategories);
 router

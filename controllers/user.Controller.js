@@ -59,14 +59,14 @@ exports.SignIn = async (req, res) => {
 
     // send an error if he didnt exist
     if (!searchUser) {
-      res.status(400).send({ errors: [{ msg: "Bad Credential" }] });
+      res.status(400).send({ errors: [{ msg: "Mail ou mot de passe incorrecte" }] });
       return;
     }
     // check if the send it password is equal to the current Password
     const hashedpass = searchUser.password;
     const result = await bcrypt.compare(password, hashedpass);
     if (!result) {
-      res.status(400).send({ errors: [{ msg: "Bad Credential" }] });
+      res.status(400).send({ errors: [{ msg: "Mail ou mot de passe incorrecte" }] });
       return;
     }
     // else create a key
@@ -127,6 +127,8 @@ exports.getAllUsers = async (req, res) => {
     res.status(400).send({ errors: [{ msg: "can not get the Users" }] });
   }
 };
+
+
 
 // exports.AddCart=async(req,res)=>{
 //   try {

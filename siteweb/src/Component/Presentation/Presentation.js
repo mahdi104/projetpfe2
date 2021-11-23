@@ -36,7 +36,7 @@ const Presentation = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h3" component="h2">
-              A Propos de Nous
+             À propos de Nous
             </Typography>
             <Typography
               variant="h5"
@@ -44,12 +44,12 @@ const Presentation = () => {
               component="p"
               className="stylepar"
             >
-              Parce que Chaque Jour vous exigez un environnement propre et sain{" "}
-              <span>Brinet</span> conçoit, fabrique et distribue des solution et
+              Parce que chaque jour vous exigez un environnement propre et sain, {" "}
+              <span>Brinet</span> conçoit, fabrique et distribue des solutions et
               des produits innovants d'entretien d'hygiène et de désinfection.
               <br />
-              Nous Vous proposons une sélection de produits et services déstinés
-              a vous simplifier l'hygienne et dévlopper vos Affaires
+              Nous vous proposons une sélection de produits et services destinés
+              à vous simplifier l'hygiène et développer vos affaires.
             </Typography>
           </CardContent>
         </CardActionArea>

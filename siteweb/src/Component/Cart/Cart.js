@@ -5,6 +5,7 @@ import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import  Message  from "./Message";
 import { addToCart,removeFromCart } from "../../JS/action/Cart";
 import {  getProductById} from "../../JS/action/product";
+import supprimer from "../../Assets/image/delete.png"
 
 const Cart = ({ match, location, history }) => {
     const productId = match.params.id
@@ -25,16 +26,16 @@ const Cart = ({ match, location, history }) => {
         dispatch(removeFromCart(id))
     }
     const checkoutHandler = () => {
-        history.push('/login?redirect=signin')
+        alert("Votre demande de devis à été envoyé avec succés")
     }
     return (
         <div>
             <Row>
                 <Col md={8}>
-                    <h1>Shopping Cart</h1>
+                    <h2>Liste des achats</h2>
                     {cart.length === 0 ? (
                         <Message>
-                            Your cart is empty <Link to='/'>Go Back</Link>
+                            Votre panier est vide <Link to='/'>Retour</Link>
                         </Message>
                     ) : (
                     <ListGroup variant='flush'>
@@ -54,13 +55,15 @@ const Cart = ({ match, location, history }) => {
                                   {/* <button onClick={()=>{addToCart(item,qty+1)}}>+</button> */}
                   </Col>
                   <Col md={2}>
-                    <Button
+                    {/* <Button
                       type='button'
                       variant='dark'
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      <i className='fas fa-trash'></i>
-                    </Button>
+                      <i class="fas fa-trash-alt"></i> */}
+
+                    {/* </Button> */}
+                    <img src={supprimer} alt="delete" onClick={() => removeFromCartHandler(item.product)} width="20%"/>
                   </Col>
                 </Row>
               </ListGroup.Item>
@@ -73,8 +76,8 @@ const Cart = ({ match, location, history }) => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2>
-                Subtotal ({cart.reduce((acc, item) => acc + item.qty, 0)})
-                items
+                Total ({cart.reduce((acc, item) => acc + item.qty, 0)})
+                
               </h2>
              
             </ListGroup.Item>
@@ -85,7 +88,7 @@ const Cart = ({ match, location, history }) => {
                 disabled={cart.length === 0}
                 onClick={checkoutHandler}
               >
-                Proceed To Checkout
+                Soumettre votre devis
               </Button>
             </ListGroup.Item>
           </ListGroup>
