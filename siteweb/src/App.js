@@ -47,7 +47,7 @@ function App() {
      <Route path="/productlist" component={GetProduct}/>
      <Route path="/categorie" component={GetProductyCategorie}/>
      <PrivateRouteAdmin path="/listeUtilisateurs" component={GetUsers}/>
-     <PrivateRoute path="/cart/:id?" component={Cart}/>
+     <PrivateRoute path="/cart" component={Cart}/>
      <Route path="/*" component={Errors}/>
    </Switch>
  </div>

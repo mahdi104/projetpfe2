@@ -6,8 +6,8 @@ const Profile = () => {
   const user = useSelector((state) => state.userReducer.user);
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(currentUser());
-  }, []);
+    dispatch(currentUser);
+  },[]);
 
   return (
     <div className="container profile">

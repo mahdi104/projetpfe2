@@ -99,6 +99,7 @@ export const getProductByCategories = (categories) => async (dispatch) => {
       `/api/product/categorie/${categories}`,
       options
     );
+
     dispatch({
       type: GET_PRODUCT,
       payload: res.data.productToFind,

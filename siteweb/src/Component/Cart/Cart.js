@@ -6,6 +6,7 @@ import  Message  from "./Message";
 import { addToCart,removeFromCart } from "../../JS/action/Cart";
 import {  getProductById} from "../../JS/action/product";
 import supprimer from "../../Assets/image/delete.png"
+import { currentUser } from '../../JS/action/user';
 
 const Cart = ({ match, location, history }) => {
     const productId = match.params.id
@@ -15,7 +16,8 @@ const Cart = ({ match, location, history }) => {
     const [state, setstate] = useState(qty)
     // const  {cartItems}  = cart
     useEffect(() => {
-      dispatch(getProductById)
+     
+      dispatch(currentUser);
     }, [])
     // useEffect(() => {
     //     if (productId) {

@@ -11,7 +11,7 @@ import {
   const initialState = {
     user: null,
     isUser: false,
-    loadUser: false,
+    loadUser: true,
     errors: [],
     users: [],
   };
@@ -41,9 +41,9 @@ import {
       case CURRENT_USER:
         return {
           ...state,
-          loadUser: false,
           user: payload,
           isUser: true,
+          loadUser: false,
           errors: [],
         };
       case GET_ALL_USERS:

@@ -12,7 +12,7 @@ import {
     loadProducts: false,
     errors: [],
     isEdit: false,
-    oneproduct: {},
+    oneProduct: [],
   };
   
   const productReducer = (state = initState, { type, payload }) => {

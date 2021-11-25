@@ -52,6 +52,7 @@ import {
       const options = {
         headers: { Authorization: localStorage.getItem("token") },
       };
+      dispatch({ type: LOAD_USER });
       const result = await axios.get("/api/user/current", options);
       dispatch({ type: CURRENT_USER, payload: result.data });
     } catch (error) {

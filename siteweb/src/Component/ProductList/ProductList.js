@@ -1,21 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getProduct } from "../../JS/action/product";
+import { getProduct, getProductByCategories } from "../../JS/action/product";
 import Product from "../Product/Product";
 
 const ProductList = () => {
-  const products = useSelector((state) => state.productReducer.products);
-
+  const products = useSelector((state) => state.productReducer.oneProduct);
+const [categorie, setcategorie] = useState("Hygiène Des Cuisines")
   const loadProducts = useSelector(
     (state) => state.productReducer.loadProducts
   );
+  console.log(products)
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getProduct());
-  }, []);
+    dispatch(getProductByCategories(categorie));
+  }, [categorie]);
   return (
     <div>
+      <label for="pet-select">Catégorie:</label>
+
+<select name="cat" id="cat" onChange={(e)=>{setcategorie(e.target.value)}}>
+    <option value="">--Please choose an option--</option>
+    <option value="Hygiène Des Cuisines">Hygiène Des Cuisines</option>
+    <option value="cat">Cat</option>
+</select>
       <div
         style={{
           display: "flex",
